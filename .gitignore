@@ -1,5 +1,25 @@
-virtualenv/
-.vscode
+# Virtual environment
+venv/
+
+# Visual Studio Code
+.vscode/
+
+# Database file
 db.sqlite3
+
+# Compiled Python files
 **/__pycache__/
-_pycache_*
+*.pyc
+
+# Django migration files (automatically generated)
+**/migrations/
+
+# Ignore the generated static and media files
+staticfiles/
+media/
+
+# Ignore environment-specific settings files
+*.env
+
+# Ignore local development configuration
+.local/
