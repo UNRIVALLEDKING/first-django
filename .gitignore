@@ -1,3 +1,5 @@
 virtualenv/
 .vscode
 db.sqlite3
+/_pycache_/
+_pycache_*
