@@ -1,19 +1,16 @@
-"""home URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
+# Import the admin module for Django's built-in admin interface
 from django.contrib import admin
+
+# Import the path and include functions from the django.urls module
 from django.urls import path, include
 
-urlpatterns = [path("admin/", admin.site.urls), path("api/", include("api.urls"))]
+# Define the URL patterns for your Django project
+
+# The first URL pattern maps the /admin/ URL to the Django admin site
+# This allows access to the built-in admin interface provided by Django
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    # The second URL pattern maps the /api/ URL to the included URLs from the api app
+    # This allows routing to the URLs defined in the api app
+    path("api/", include("api.urls")),
+]
