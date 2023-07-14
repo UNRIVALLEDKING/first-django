@@ -1,5 +1,6 @@
 import json
-from django.http import JsonResponse, HttpResponse
+
+# from django.http import JsonResponse, HttpResponse
 
 """
 def api_home(request, *args, **kwargs):
@@ -49,7 +50,7 @@ def api_home(request, *args, **kwargs):
 """
 
 # Using Models
-from product.models import Product
+# from product.models import Product
 
 # Import the Product model from the product app's models.py file
 
@@ -70,12 +71,39 @@ def api_home(request, *args, **kwargs):
 """
 
 
-from django.forms.models import model_to_dict
+# from django.forms.models import model_to_dict
 
-
+"""
 def api_home(request, *args, **kwargs):
     model_data = Product.objects.all().order_by("?").first()
     data = {}
     if model_data:
         data = model_to_dict(model_data, fields=["id", "title", "price"])
-    return HttpResponse(data)
+    # return HttpResponse(data, headers={"content-type": "application/json"})
+    return JsonResponse(data)
+"""
+
+
+# Django Rest Framework Starts Here
+from product.models import Product
+from product.serializers import ProductSerializer
+from django.forms.models import model_to_dict
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
+
+@api_view(["GET", "POST"])
+def api_home(request, *args, **kwargs):
+    """
+    This is DRF Api View
+    """
+    """
+    if request.method != "POST":
+        return Response({"details": "GET not Allowed"}, status=405)
+    """
+    instance = Product.objects.all().order_by("?").first()
+    data = {}
+    if instance:
+        # data = model_to_dict(instance, fields=["id", "title", "price", "sale_price"])
+        data = ProductSerializer(instance).data
+    return Response(data)

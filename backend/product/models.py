@@ -15,3 +15,10 @@ class Product(models.Model):
 
     # A decimal field for the price of the product with a maximum of 15 digits and 2 decimal places. It has a default value of 99.99.
     price = models.DecimalField(max_digits=15, decimal_places=2, default=99.99)
+
+    @property
+    def sale_price(self):
+        return "%.2f" % (float(self.price) * 0.8)
+
+    def get_discount(self):
+        return "202"
