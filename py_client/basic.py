@@ -50,8 +50,8 @@ get_response = requests.get(
     endpoint, params={"abc": 123}, json={"query": "Hello World!"}
 )
 
-# print(get_response.json()) for JSON response
-print(get_response.headers)
+print(get_response.json())  # for JSON response
+# print(get_response.headers)
 print(get_response.status_code)
 
 # we can also set params directly to endpoints like this
